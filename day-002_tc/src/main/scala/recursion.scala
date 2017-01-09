@@ -31,7 +31,6 @@ object recursion {
   //Exercise 1
   //Write a function for Factorial in an imperative way
   //Write the test for it too under the src/test/scala directory
-<<<<<<< HEAD:day-002_tc/src/main/scala/recursion.scala
   def factImp(n: Int): Int = {
     var count=n
     var res=1
@@ -41,22 +40,12 @@ object recursion {
     }
 
     res
-=======
-  def factImp(n: Int ): Int = {
-    require (n>=0) //Require imposes a pre-condition to the input parameters, if non compliant will launch an Exception // see tests for examples
-    var fact = 1
-    for (i <- 1 to n){
-      fact = fact * i
-    }
-    fact
->>>>>>> 196a2a2dc9ffecbee4989cc7f1651710abc1f127:day-002/src/main/scala/recursion.scala
   }
 
   //Exercise 2.a
   //Write a function for Factorial in a recursive way, try to make it tail recursive
   //Write the test for it too under the src/test/scala directory
   def factRec(n: Int): Int = {
-<<<<<<< HEAD:day-002_tc/src/main/scala/recursion.scala
     @annotation.tailrec
     def go(acc: Int, n: Int) : Int ={
       if(n <= 0 ) acc
@@ -64,14 +53,6 @@ object recursion {
     }
 
     go(1,n)
-=======
-    require(n>=0)
-    n match { //This is the syntax from pattern matching, in this case a really simple pattern
-      case x if x < 0 => 0
-      case 0 => 1
-      case x => x * factRec( x - 1) //This recursion call is NOT a tail call, as there is another operation after the function returns
-    }
->>>>>>> 196a2a2dc9ffecbee4989cc7f1651710abc1f127:day-002/src/main/scala/recursion.scala
   }
 
   //this function is the same as before, but using if-else (to follow better scala better to use pattern matching
@@ -106,7 +87,6 @@ object recursion {
   //The function must find the Nth Fibonacci Element
   //Write the test for it too under the src/test/scala directory
   def fibImp(n: Int): Int = {
-<<<<<<< HEAD:day-002_tc/src/main/scala/recursion.scala
     var res=0
     var minOne=0
     var minTwo=0
@@ -122,24 +102,6 @@ object recursion {
       count = count + 1
     }
     res
-=======
-    require(n>=0)
-    var n1 = 1
-    var n2 = 0
-    var fib = 0
-    var pos = 0
-    n match {
-      case 0 => fib = 0
-      case 1 => fib = 1
-      case x => for (i <- 1 until x) {
-          fib = n1+n2
-          n2=n1
-          n1=fib
-          pos = i
-        }
-    }
-    fib
->>>>>>> 196a2a2dc9ffecbee4989cc7f1651710abc1f127:day-002/src/main/scala/recursion.scala
   }
 
 
@@ -147,7 +109,6 @@ object recursion {
   //Write a Fibonacci function in a recursive way, try to make it tail recursive
   //Write the test for it too under the src/test/scala directory
   def fibRec(n: Int): Int = {
-<<<<<<< HEAD:day-002_tc/src/main/scala/recursion.scala
     @annotation.tailrec
     def fib(i: Int, n: Int, resMinOne: Int=1, resMinTwo: Int=0): Int = {
       if(n <= 2) 1
@@ -158,15 +119,5 @@ object recursion {
     }
 
     fib(2,n)
-=======
-    require(n>=0) //ensures
-    @annotation.tailrec //ensures that the compiler will enforce tail recursion
-    def go(n:Int, n1:Int, n2:Int): Int = n match { //using accumulators help create tail recursive functions
-      case 0 => n2
-      case 1 => n1
-      case x => go(x-1, n1+n2, n1)
-    }
-    go(n,1,0)
->>>>>>> 196a2a2dc9ffecbee4989cc7f1651710abc1f127:day-002/src/main/scala/recursion.scala
   }
 }
